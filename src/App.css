@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: Minecrafter;
+  src: url(fonts/minecrafter.ttf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  font-family: Minecrafter;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background: url("bg.jpg");
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  min-height: 100vh;
+  background-color: #222222;
+}
+
+.server-status-list {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255,255,255,0.2);
+  padding: 16px;
+  margin: 32px;
+  border-radius: 4px;
+  width: 85vw;
+  max-width: 550px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+}
+
+.server-status-item {
+  background-color: rgba(255,255,255,0.4);
+  padding: 16px;
+  display: flex;
+  font-size: 1.7rem;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
   color: white;
+  text-shadow: 0 2px 1px rgba(0,0,0,0.4);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
 }
 
-.App-link {
-  color: #61dafb;
+.server-status-item:not(:last-child) {
+  margin-bottom: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.server-name {
+  display: flex;
+}
+
+.server-status-players, .server-status-loading {
+  display: flex;
+}
+
+.slash {
+  font-size: 1.2rem;
+  padding: 0 10px;
+  color: #dddddd;
+  font-weight: 600;
+}
+
+.logo-container {
+  display: flex;
+  max-width: 80vw;
+  justify-content: center;
+}
+
+.logo {
+  object-fit: contain;
+  max-width: 360px;
+}
+
+@media screen and (max-width: 600px) {
+  .logo {
+    object-fit: contain;
+    max-width: 80vw;
   }
-  to {
-    transform: rotate(360deg);
+
+  .server-status-item  {
+    font-size: 1.4rem;
+  }
+
+  .slash {
+    font-size: 0.8rem;
   }
 }

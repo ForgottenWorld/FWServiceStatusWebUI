@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import servers from './servers';
+import ServerStatusItem from './components/ServerStatusItem'
+import logo from './logo.png';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+        <div className="logo-container">
+          <img className="logo" alt="FW Logo" src={logo}></img>
+        </div>
+        <div className="server-status-list">
+          {
+            servers.map(s =>
+              <ServerStatusItem name={s.name} url={s.url}></ServerStatusItem>
+            )
+          }
+        </div>
     </div>
   );
 }
