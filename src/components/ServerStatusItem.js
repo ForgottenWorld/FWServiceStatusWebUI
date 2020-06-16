@@ -31,6 +31,11 @@ export default class ServerStatusItem extends React.Component {
                 });
             }
         }
+        xhr.onerror = () => {
+            this.setState({
+              isError: true
+            }) 
+        }
         xhr.send();
     }
 

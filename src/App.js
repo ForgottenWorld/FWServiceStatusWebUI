@@ -8,6 +8,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
+      isError: false,
       isLoaded: false,
       servers: []
     }
@@ -21,9 +22,9 @@ export default class App extends React.Component {
         xhr.responseType = 'application/json';
         xhr.onload = () => {
             if (xhr.status !== 200) {
-/*                 this.setState({
+                this.setState({
                   isError: true
-                })  */
+                }) 
             } else {
                 const data = JSON.parse(xhr.response);
                 
@@ -36,6 +37,11 @@ export default class App extends React.Component {
                 });
             }
         }
+        xhr.onerror = () => {
+            this.setState({
+              isError: true
+            }) 
+        }
         xhr.send();
   }
 
@@ -47,11 +53,11 @@ export default class App extends React.Component {
           </div>
           <div className="server-status-list">
             {
-              this.state.isLoaded
-              ? this.state.servers.map(s =>
-                <ServerStatusItem name={s.name} url={s.url}></ServerStatusItem>
-              )
-              : <div className="loader"></div>
+              this.state.isError
+                ? <div className="server-error">API OFFLINE</div>
+                : this.state.isLoaded
+                  ? this.state.servers.map(s => <ServerStatusItem name={s.name} url={s.url}></ServerStatusItem>)
+                  : <div className="loader"></div>
             }
           </div>
       </div>

@@ -40,6 +40,12 @@
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
 }
 
+.server-error {
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
 .server-status-item:not(:last-child) {
   margin-bottom: 16px;
 }
