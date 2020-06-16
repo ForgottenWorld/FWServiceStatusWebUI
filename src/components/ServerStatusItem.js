@@ -7,7 +7,8 @@ export default class ServerStatusItem extends React.Component {
         this.state = {
             isLoaded: false,
             curPlayers: -1,
-            maxPlayers: -1
+            maxPlayers: -1,
+            isError: false
         }
     }
 
@@ -17,9 +18,9 @@ export default class ServerStatusItem extends React.Component {
         xhr.responseType = 'text/plain';
         xhr.onload = () => {
             if (xhr.status !== 200) {
-/*                 this.setState({
-                isError: true
-                }) */
+                this.setState({
+                    isError: true
+                }) 
             } else {
                 const data = JSON.parse(xhr.response);
                 
@@ -39,7 +40,12 @@ export default class ServerStatusItem extends React.Component {
                 <span className="server-name">{this.props.name}</span>
                 {this.state.isLoaded
                     ? <div className="server-status-players">{this.state.curPlayers}<span className="slash">/</span>{this.state.maxPlayers}</div>
-                    : <div className="server-status-loading"><div className="loader"></div></div>
+                    : <div className="server-status-loading">
+                        {this.state.isError
+                        ? <div className="server-status-error">OFFLINE</div>
+                        :<div className="loader"></div>
+                        }
+                    </div>
                 }
             </div>
         );
