@@ -1,10 +1,10 @@
 export default [
     {
         name: "Alinox",
-        url: "https://fwapi.chillstudio.it/Alinox"
+        url: "https://fwapi.forgottenworld.it/Alinox"
     },
     {
         name: "Pixelmon",
-        url: "https://fwapi.chillstudio.it/Pixelmon"
+        url: "https://fwapi.forgottenworld.it/Pixelmon"
     }
 ]

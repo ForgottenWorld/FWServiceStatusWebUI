@@ -39,7 +39,7 @@ export default class ServerStatusItem extends React.Component {
                 <span className="server-name">{this.props.name}</span>
                 {this.state.isLoaded
                     ? <div className="server-status-players">{this.state.curPlayers}<span className="slash">/</span>{this.state.maxPlayers}</div>
-                    : <div className="server-status-loading">Loading...</div>
+                    : <div className="server-status-loading"><div className="loader"></div></div>
                 }
             </div>
         );
