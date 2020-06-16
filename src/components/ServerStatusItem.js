@@ -14,8 +14,8 @@ export default class ServerStatusItem extends React.Component {
 
     componentDidMount() {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://cors-anywhere.herokuapp.com/" + this.props.url);
-        xhr.responseType = 'text/plain';
+        xhr.open('GET', this.props.url);
+        xhr.responseType = 'application/json';
         xhr.onload = () => {
             if (xhr.status !== 200) {
                 this.setState({

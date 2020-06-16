@@ -1,6 +1,6 @@
 {
   "name": "fwservicestatuswebui",
-  "homepage": "https://forgottenworld.github.io/FWServiceStatusWebUI/",
+  "homepage": "https://status.forgottenworld.it/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

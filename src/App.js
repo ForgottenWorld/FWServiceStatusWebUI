@@ -17,8 +17,8 @@ export default class App extends React.Component {
   componentDidMount() {
 
     const xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://cors-anywhere.herokuapp.com/https://fwapi.forgottenworld.it/");
-        xhr.responseType = 'text/plain';
+        xhr.open('GET', "https://fwapi.forgottenworld.it/servers");
+        xhr.responseType = 'application/json';
         xhr.onload = () => {
             if (xhr.status !== 200) {
 /*                 this.setState({
@@ -31,7 +31,7 @@ export default class App extends React.Component {
                     isLoaded: true,
                     servers: data.map(s => { return {
                       name: s,
-                      url: "https://cors-anywhere.herokuapp.com/https://fwapi.forgottenworld.it/" + s
+                      url: "https://fwapi.forgottenworld.it/serben/" + s
                     } })
                 });
             }
