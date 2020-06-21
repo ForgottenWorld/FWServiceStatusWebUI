@@ -75,7 +75,7 @@
 
 .logo {
   object-fit: contain;
-  max-width: 360px;
+  max-width: 300px;
 }
 
 .loader,
@@ -154,7 +154,7 @@
 @media screen and (max-width: 600px) {
   .logo {
     object-fit: contain;
-    max-width: 80vw;
+    max-width: 60vw;
   }
 
   .server-status-item  {

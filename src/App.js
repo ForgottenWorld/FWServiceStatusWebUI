@@ -4,6 +4,7 @@ import ServerStatusItem from './components/ServerStatusItem'
 import logo from './logo.png';
 
 export default class App extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -16,33 +17,33 @@ export default class App extends React.Component {
 
 
   componentDidMount() {
-
+    
     const xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://fwapi.forgottenworld.it/servers");
-        xhr.responseType = 'application/json';
-        xhr.onload = () => {
-            if (xhr.status !== 200) {
-                this.setState({
-                  isError: true
-                }) 
-            } else {
-                const data = JSON.parse(xhr.response);
-                
-                this.setState({
-                    isLoaded: true,
-                    servers: data.map(s => { return {
-                      name: s,
-                      url: "https://fwapi.forgottenworld.it/serben/" + s
-                    } })
-                });
-            }
-        }
-        xhr.onerror = () => {
+    xhr.open('GET', "https://fwapi.forgottenworld.it/servers");
+    xhr.responseType = 'application/json';
+    xhr.onload = () => {
+        if (xhr.status !== 200) {
             this.setState({
               isError: true
             }) 
+        } else {
+            const data = JSON.parse(xhr.response);
+            
+            this.setState({
+                isLoaded: true,
+                servers: data.map(s => { return {
+                  name: s,
+                  url: "https://fwapi.forgottenworld.it/serben/" + s
+                } })
+            });
         }
-        xhr.send();
+    }
+    xhr.onerror = () => {
+        this.setState({
+          isError: true
+        }) 
+    }
+    xhr.send();
   }
 
   render () {
