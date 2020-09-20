@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import ServerStatusItem from './components/ServerStatusItem'
-import logo from './logo.png';
 
 export default class App extends React.Component {
 
@@ -50,7 +49,7 @@ export default class App extends React.Component {
     return (
       <div className="app">
           <div className="logo-container">
-            <img className="logo" alt="FW Logo" src={logo}></img>
+            <img className="logo" alt="FW Logo" src="https://cdn.statically.io/gh/ForgottenWorld/images/58b85a5a/logo.webp"></img>
           </div>
           <div className="server-status-list">
             {
