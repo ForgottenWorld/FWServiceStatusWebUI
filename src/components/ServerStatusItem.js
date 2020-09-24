@@ -1,58 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default class ServerStatusItem extends React.Component {
-    constructor(props) {
-        super(props);
+export default function ServerStatusItem(props) {
 
-        this.state = {
-            isLoaded: false,
-            curPlayers: -1,
-            maxPlayers: -1,
-            isError: false
-        }
-    }
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [curPlayers, setCurPlayers] = useState(-1);
+    const [maxPlayers, setMaxPlayers] = useState(-1);
+    const [isError, setIsError] = useState(false);
 
-    componentDidMount() {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', this.props.url);
-        xhr.responseType = 'application/json';
-        xhr.onload = () => {
-            if (xhr.status !== 200) {
-                this.setState({
-                    isError: true
-                }) 
-            } else {
-                const data = JSON.parse(xhr.response);
-                
-                this.setState({
-                    isLoaded: true,
-                    curPlayers: data.online,
-                    maxPlayers: data.max
-                });
-            }
-        }
-        xhr.onerror = () => {
-            this.setState({
-              isError: true
-            }) 
-        }
-        xhr.send();
-    }
+    useEffect(() => {
 
-    render() {
-        return (
-            <div className="server-status-item">
-                <span className="server-name">{this.props.name}</span>
-                {this.state.isLoaded
-                    ? <div className="server-status-players">{this.state.curPlayers}<span className="slash">/</span>{this.state.maxPlayers}</div>
-                    : <div className="server-status-loading">
-                        {this.state.isError
-                        ? <div className="server-status-error">OFFLINE</div>
-                        :<div className="loader"></div>
-                        }
+        fetch(props.url)
+        .then(r => {
+            
+          if (r.status !== 200) {
+            setIsError(true);
+            return;
+          }
+    
+          r.json().then(data => {
+            setIsLoaded(true);
+            setCurPlayers(data.online);
+            setMaxPlayers(data.max);
+          })
+
+        })
+        .catch(_ => setIsError(true));
+
+    }, [setIsError, setCurPlayers, setMaxPlayers, setIsLoaded, props.url])
+
+    return (
+        <div className="server-status-item">
+            <span className="server-name">{props.name}</span>
+            {isLoaded
+                ? <div className="server-status-players">
+                        {curPlayers}<span className="slash">/</span>{maxPlayers}
                     </div>
-                }
-            </div>
-        );
-    }
+                : <div className="server-status-loading">
+                    {isError
+                    ? <div className="server-status-error">OFFLINE</div>
+                    :<div className="loader"></div>
+                    }
+                </div>
+            }
+        </div>
+    );
+
 }
