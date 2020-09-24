@@ -32,7 +32,7 @@ export default class App extends React.Component {
                 isLoaded: true,
                 servers: data.map(s => { return {
                   name: s,
-                  url: "https://fwapi.forgottenworld.it/serben/" + s
+                  url: "https://fwapi.forgottenworld.it/server/" + s
                 } })
             });
         }
