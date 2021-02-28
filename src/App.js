@@ -41,7 +41,9 @@ export default function App() {
             isError
               ? <div className="server-error">API OFFLINE</div>
               : isLoaded
-                ? servers.map((s, i) => <ServerStatusItem key={`ssi-i`} name={s.name} url={s.url}></ServerStatusItem>)
+                ? servers.length === 0
+                  ? <div className="server-error">NESSUN SERVER DISPONIBILE</div>
+                  : servers.map((s, i) => <ServerStatusItem key={`ssi-i`} name={s.name} url={s.url}></ServerStatusItem>)
                 : <div className="loader"></div>
           }
         </div>
