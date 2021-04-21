@@ -34,7 +34,7 @@ export default function App() {
   return (
     <div className="app">
         <div className="logo-container">
-          <img className="logo" alt="FW Logo" src="https://cdn.statically.io/gh/ForgottenWorld/images/58b85a5a/logo.webp"></img>
+          <img className="logo" alt="FW Logo" src="https://static.forgottenworld.it/logo.webp"></img>
         </div>
         <div className="server-status-list">
           {
